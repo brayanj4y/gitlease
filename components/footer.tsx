@@ -85,14 +85,6 @@ export function Footer() {
           <div className="text-xs text-[rgb(var(--accent-light))] mb-3 md:mb-0">
             © {currentYear} GitLease. All rights reserved.
           </div>
-          <div className="flex items-center text-xs text-[rgb(var(--accent-light))]">
-            <span className="flex items-center">
-              Made with <Heart className="w-3 h-3 mx-1 text-red-500" /> by
-              <a href="https://github.com/brayanj4y" className="text-[rgb(var(--accent-green))] hover:underline ml-1">
-                brayanj4y
-              </a>
-            </span>
-          </div>
         </div>
       </div>
     </footer>
