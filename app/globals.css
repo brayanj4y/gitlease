@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 20, 20, 20;
+  --accent-green: 46, 204, 113;
+  --accent-green-dark: 39, 174, 96;
+  --accent-gray: 52, 58, 64;
+  --accent-light: 236, 240, 241;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
+  font-family: "Geist Mono", monospace;
+  min-height: 100vh;
+  font-size: 0.8rem; /* Reduce text size by 20% */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Brutalist 3D Logo */
+.brutalist-logo-container {
+  perspective: 800px;
+  overflow: hidden;
+}
+
+.brutalist-logo {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 20s infinite linear;
+  transform: rotateX(15deg) rotateY(15deg);
+  transition: transform 0.3s ease;
+}
+
+.brutalist-logo:hover {
+  animation-play-state: paused;
+}
+
+.brutalist-logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.brutalist-logo-text span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: rgb(var(--accent-green));
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: -0.5rem 0;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.brutalist-logo-text span:nth-child(1) {
+  transform: translateZ(20px);
+}
+
+.brutalist-logo-text span:nth-child(2) {
+  transform: translateZ(0px);
+}
+
+.brutalist-logo-text span:nth-child(3) {
+  transform: translateZ(-20px);
+}
+
+.brutalist-logo-text::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: rgba(var(--accent-green), 0.1);
+  border: 2px solid rgb(var(--accent-green));
+  transform: translateZ(-30px);
+  border-radius: 8px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(15deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(15deg) rotateY(360deg);
+  }
+}
+
+/* Ensure consistent transitions */
+* {
+  transition-property: transform, background-color, border-color, color, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+
+/* Improve focus states for accessibility */
+:focus-visible {
+  outline: 2px solid rgb(var(--accent-green));
+  outline-offset: 2px;
+}
+
+/* Ensure scrollbars match the theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--accent-gray));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--accent-green));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent-green-dark));
+}
+
+/* Ensure date picker has consistent styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Add a loading animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Add a copy success animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-fadeOut {
+  animation: fadeOut 2s ease-out forwards;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Green glow effect */
+.green-glow {
+  box-shadow: 0 0 15px rgba(var(--accent-green), 0.5);
+}
+
+/* Card styles */
+.card {
+  background: rgb(var(--accent-gray));
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styles */
+.btn {
+  background: rgb(var(--accent-green));
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: rgb(var(--accent-green-dark));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--accent-green), 0.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Input styles */
+.input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  border-color: rgb(var(--accent-green));
+  box-shadow: 0 0 0 2px rgba(var(--accent-green), 0.2);
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Update select text color */
+select {
+  color: black !important;
+  background-color: white !important;
+}
+
+/* Footer styles */
+.footer {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.5rem 0;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  color: rgb(var(--accent-green));
+}
