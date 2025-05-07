@@ -9,7 +9,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "GitLease - GitHub Release Notes Generator",
   description: "Automatically generate professional release notes for GitHub repositories",
-    generator: 'v0.dev'
+  icons: {
+    icon: "/favicon.jpg",
+  },
 }
 
 export default function RootLayout({
